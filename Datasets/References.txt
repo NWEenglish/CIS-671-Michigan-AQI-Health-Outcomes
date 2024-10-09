@@ -1,2 +1,3 @@
 County Health - https://www.countyhealthrankings.org/health-data/michigan/data-and-resources
 Annaul AQI - https://aqs.epa.gov/aqsweb/airdata/download_files.html
+Michigan PFAS Sites - https://gis-egle.hub.arcgis.com/datasets/17b26cf283624bf49705741e81fde0c4_0/explore
