@@ -21,8 +21,8 @@ Bay,Bay City,Industrial
 Bay,Bay City,Industrial
 Bay,Bay City,Landfill
 Bay,Bay City,Landfill
-Bay County,Bay City,Industrial
-Bay County,Bay City,Landfill
+Bay ,Bay City,Industrial
+Bay ,Bay City,Landfill
 Berrien,Benton Harbor,Plating
 Berrien,Eau Claire,Plating
 Berrien,Niles,Fire Related
@@ -33,9 +33,9 @@ Calhoun,Battle Creek,Airport
 Calhoun,Battle Creek,Military
 Cass,Niles,Fire Related
 Charlevoix ,Charlevoix ,Laundromat/Dry Cleaner
-Charlevoix County,East Jordan,Landfill
-Cheboygan County,Cheboygan,Landfill
-Chippewa,,Military
+Charlevoix ,East Jordan,Landfill
+Cheboygan ,Cheboygan,Landfill
+Chippewa,N/A,Military
 Clare,Clare,Plating
 Clare,Farwell,Landfill
 Clare,Harrison,Landfill
@@ -52,11 +52,11 @@ Delta,Escanaba,Landfill
 Delta,Escanaba,Military
 Dickinson,Kingsford,Landfill
 Dickinson ,Kingsford,Airport
-Dickinson County,Iron Mountain,Landfill
+Dickinson ,Iron Mountain,Landfill
 Eaton,Dimondale,Fire Related
 Eaton,Eaton Rapids,Landfill
 Eaton,Potterville,Landfill
-Eaton County,Eaton Rapids,Laundromat/DryCleaner
+Eaton ,Eaton Rapids,Laundromat/DryCleaner
 Emmet,Pellston,Airport
 Genesee,Burton,Industrial
 Genesee,Davison,Landfill
@@ -71,32 +71,32 @@ Genesee,Flint Township  ,Industrial
 Genesee,Genesee Township,Landfill
 Genesee,Montrose Township,Landfill
 Genesee,Otisville,Landfill
-Genesee County,Burton,Industrial
-Genesee County,Clio,Fire Related
-Genesee County,Flint,Industrial
-Genesee County,Flushing,Laundromat/DryCleaner
+Genesee ,Burton,Industrial
+Genesee ,Clio,Fire Related
+Genesee ,Flint,Industrial
+Genesee ,Flushing,Laundromat/DryCleaner
 Gogebic,Ironwood,Airport
 Grand Traverse,Traverse City,Airport
 Grand Traverse,Traverse City,Fire Related
 Grand Traverse,Traverse City,Military
 Gratiot,Alma,Refinery
 Gratiot,Ithaca,Landfill
-Gratiot County,Ithaca,Industrial
+Gratiot ,Ithaca,Industrial
 Houghton,Calumet,Airport
 Houghton,Calumet,Wastewater
-Houghton County,Houghton,Landfill
+Houghton ,Houghton,Landfill
 Huron,Bad Axe,Landfill
 Ingham,Lansing,Industrial
 Ingham,Lansing,Landfill
 Ingham,Lansing,Laundromat/Dry Cleaner
 Ingham,Lansing,Plating
-Ingham County,Lansing,Industrial
+Ingham ,Lansing,Industrial
 Ionia,Belding,Landfill
 Ionia,Belding,Wastewater
 Ionia,Ionia,Landfill
 Ionia,Saranac,Landfill
 Ionia,Saranac,Plating
-Ionia County,Lowell,Landfill
+Ionia ,Lowell,Landfill
 Iosco,AuSable Township,Unknown
 Iosco,Oscoda,Fire Related
 Iosco,Oscoda,Fire Related
@@ -113,7 +113,7 @@ Isabella,Mt. Pleasant,Laundromat/Dry Cleaner
 Jackson,Clark Lake,Landfill
 Jackson,Jackson,Plating
 Jackson,Jackson,Plating
-Jackson County,Jackson,Plating
+Jackson ,Jackson,Plating
 Kalamazoo,Kalamazoo,Industrial
 Kalamazoo,Kalamazoo,Industrial
 Kalamazoo,Kalamazoo,Landfill
@@ -152,12 +152,11 @@ Kent,Rockford,Tannery
 Kent,Sparta,Landfill
 Kent,Wyoming,Industrial
 Kent,Wyoming,Plating
-Kent County,Grand Rapids,Plating
-Kent County,Walker,Landfill
-Keweenaw County,Copper Harbor,Landfill
+Kent ,Grand Rapids,Plating
+Kent ,Walker,Landfill
+Keweenaw ,Copper Harbor,Landfill
 Lake,Baldwin,Laundromat/Dry Cleaner
-Lapeer,"Lapeer
-",Plating
+Lapeer,Lapeer,Plating
 Lapeer,Metamora,Landfill
 Leelanau,Maple City,Landfill
 Lenawee,Adrian,Landfill
@@ -172,7 +171,7 @@ Livingston,Howell,Industrial
 Livingston,Howell,Landfill
 Livingston,Howell,Plating
 Livingston,Howell ,Landfill
-Livingston County,Brighton,Industrial
+Livingston ,Brighton,Industrial
 Mackinac,Mackinac Island,Landfill
 Macomb,Harrison Charter Township,Military
 Macomb,Macomb Township,Landfill
@@ -180,16 +179,16 @@ Macomb,Mount Clemens,Fire Related
 Macomb,Warren,Military
 Macomb,Washington,Landfill
 Macomb,Washington,Landfill
-Macomb County,Utica,Industrial
+Macomb ,Utica,Industrial
 Manistee,Manistee,Airport
 Manistee,Manistee,Landfill
 Manistee,Manistee,Plating
 Marquette,Gwinn,Military
-Marquette County,Ishpeming,Landfill
+Marquette ,Ishpeming,Landfill
 Mason,Ludington,Wastewater
-Mason County,Scottville,Landfill
+Mason ,Scottville,Landfill
 Menominee,Menominee ,Landfill
-Menominee County,Menominee,Fire Related
+Menominee ,Menominee,Fire Related
 Missaukee,McBain,Wastewater
 Monroe,Monroe,Industrial
 Montcalm,Pierson,Landfill
@@ -212,8 +211,8 @@ Muskegon,Ravenna,Landfill
 Muskegon,Whitehall,Industrial
 Muskegon,Whitehall,Wastewater
 Muskegon ,Whitehall,Landfill
-Muskegon County,Whitehall,Landfill
-Newaygo,"Fremont	",Landfill
+Muskegon ,Whitehall,Landfill
+Newaygo,Fremont,Landfill
 Newaygo,Grant,Wastewater
 Oakland, Pontiac               ,Industrial
 Oakland,Auburn Hills,Landfill
@@ -235,11 +234,11 @@ Oakland,Walled Lake,Industrial
 Oakland,Waterford,Airport
 Oakland,Waterford Township,Industrial
 Oakland ,Waterford,Fire Related
-Oakland County,Clarkston,Landfill
-Oakland County,Northville,Landfill
-Oakland County,Rochester Hills,Landfill
+Oakland ,Clarkston,Landfill
+Oakland ,Northville,Landfill
+Oakland ,Rochester Hills,Landfill
 Oceana & Newaygo          ,Walkerville,Tannery
-Otsego County,Gaylord,Industrial
+Otsego ,Gaylord,Industrial
 Ottawa,Grand Haven,Fire Related
 Ottawa,Grand Haven,Industrial
 Ottawa,Grand Haven,Industrial
@@ -250,11 +249,11 @@ Roscommon,Roscommon,Wastewater
 Saginaw,Birch Run,Landfill
 Saginaw,Saginaw,Industrial
 Saginaw,Saginaw,Industrial
-Saginaw County,Freeland,Airport
+Saginaw ,Freeland,Airport
 Saint Clair,Port Huron,Paper Manufacturing
 Sanilac,Carsonville,Landfill
 Schoolcraft,Manistique,Landfill
-Schoolcraft,"Manistique, Hiawatha Township",Landfill
+Schoolcraft,Manistique Hiawatha Township,Landfill
 Schoolcraft ,Manistique,Landfill
 Shiawassee,Lennon,Landfill
 Shiawassee,Owosso,Plating
@@ -277,8 +276,8 @@ Washtenaw,Northville,Landfill
 Washtenaw,Saline,Industrial
 Washtenaw,Saline,Plating
 Washtenaw,Ypsilanti,Industrial
-Washtenaw County,Chelsea,Industrial
-Washtenaw County,Ypsilanti,Laundromat/Dry Cleaner
+Washtenaw ,Chelsea,Industrial
+Washtenaw ,Ypsilanti,Laundromat/Dry Cleaner
 Wayne,Belleville,Landfill
 Wayne,Belleville,Landfill
 Wayne,Canton,Plating
@@ -293,6 +292,6 @@ Wayne,Romulus,Airport
 Wayne,Romulus,Landfill
 Wayne,Wyandotte,Industrial
 Wayne and Washtenaw,Ypsilanti,Airport
-Wayne County,Canton,Landfill
-Wayne County,Trenton,Industrial
-Wayne County,Wayne,Industrial
+Wayne ,Canton,Landfill
+Wayne ,Trenton,Industrial
+Wayne ,Wayne,Industrial
