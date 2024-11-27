@@ -1,7 +1,10 @@
 from tkinter import *
 from tkinter import ttk 
 from tkinter import font
+from tkinter import messagebox
+from functools import partial
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import math 
 
 class View:
     def __init__(self, display, model):
@@ -60,6 +63,8 @@ class View:
             canvas = FigureCanvasTkAgg(visual.get_visual(), master=figure_frame)
             canvas_widget = canvas.get_tk_widget()
             canvas_widget.grid(row=0, column=0, sticky="nsew")
+            if visual.get_id() == 4: 
+                canvas.figure.canvas.mpl_connect('button_press_event', partial(self.on_click, vis=visual))
 
             tab.grid_rowconfigure(0, weight=1)
             tab.grid_columnconfigure(0, weight=1)
@@ -100,6 +105,16 @@ class View:
         canvas_widget.grid(row=0, column=0, sticky="nsew")
         
         self.display.update()
+
+    def on_click(self, event, vis):
+        for location in vis.get_locations():
+            distance = math.sqrt(((event.xdata - location['x']) ** 2 + (event.ydata - location['y']) ** 2))
+            if distance < 0.1:  
+                self.show_popup(location['County'], location['Health Outcome'], location['Health Factors'], location['Quality Of Life'], location['Health Score'])
+                break 
+
+    def show_popup(self, county_name, health_outcome, health_factors, quality_of_life, health_score):
+        messagebox.showinfo("Information", f"County Name: {county_name}\nHealth Outcome: {health_outcome}\nHealth Factors: {health_factors}\nQuality of Life: {quality_of_life}\nHealth Score: {health_score}")
 
     def run_display(self):
         self.display.mainloop()

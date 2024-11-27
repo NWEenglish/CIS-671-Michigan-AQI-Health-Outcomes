@@ -12,6 +12,7 @@ def main():
     primary_pollutants = dp.GetPrimaryPollutants()
     health_data = dp.GetHealthData()
     pfas_occurances = dp.GetPfasOccurances()
+    geo_data = dp.GetGeoSpatialData()
 
     #Tkinter documentation https://tkdocs.com/tutorial/index.html 
     print('Starting main frame')
@@ -20,7 +21,7 @@ def main():
     
     print('Creating model')
     model = Model()
-    model.set_visualizations(aqi_days, pfas_occurances, primary_pollutants)
+    model.set_visualizations(aqi_days, pfas_occurances, primary_pollutants, geo_data, health_data)
 
     print('Creating view')
     view = View(root, model)

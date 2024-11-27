@@ -4,11 +4,12 @@ from Models.CountyHealth import CountyHealth
 from Models.CountyPfasOccurances import CountyPfasOccurances
 from typing import List
 import numpy
+import geopandas as gpd
 
 class DataProvider:
     def __init__(self, filePath:str = None):
         if (filePath == None):
-            self._dataFilePath = '..\Datasets\Clean Data'
+            self._dataFilePath = '../Datasets/Clean Data'
         else:
             self._dataFilePath = filePath
 
@@ -90,3 +91,14 @@ class DataProvider:
             print(f"Error occurred while getting health data. | Exception: {ex}")
 
         return retHealthData
+    
+    def GetGeoSpatialData() -> gpd.GeoDataFrame:
+        try:
+            fileName = '../Datasets/Clean Data/County.geojson'
+            geospatial_data = gpd.read_file(fileName)
+        
+        except Exception as ex:
+            print(f"Error occurred while getting health data. | Exception: {ex}")
+        
+        return geospatial_data
+

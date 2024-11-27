@@ -15,10 +15,11 @@ class Model:
             'heat_map' : HeatMap(),
         }
 
-    def set_visualizations(self, aqi_days, pfas_occurances, primary_pollutants): 
+    def set_visualizations(self, aqi_days, pfas_occurances, primary_pollutants, geo_data, health_data): 
         self.add_bubble_chart(pfas_occurances)
         self.add_column_chart(aqi_days)
         self.add_pie_chart(primary_pollutants)
+        self.add_choropleth_map(geo_data, health_data, primary_pollutants) 
 
     def get_visualizations(self):
         return self.visualizations
@@ -70,6 +71,10 @@ class Model:
             visual.add_to_dict(county)
 
         self.visualizations.get('pie_chart').create_pie_chart()
+
+    def add_choropleth_map(self, geospatial, health_data, primary_pollutant):
+        self.visualizations.get('choropleth_map').set_data([geospatial, health_data, primary_pollutant])
+        self.visualizations.get('choropleth_map').create_choropleth_map() 
 
 
 
