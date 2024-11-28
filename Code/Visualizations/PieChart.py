@@ -1,11 +1,16 @@
-from Visualizations.Visualization import Visualization
-from matplotlib.figure import Figure
+from Enums.Visualization import Visual
+from Visualizations.BaseVisual import BaseVisual
 from collections import Counter
+from matplotlib.figure import Figure
 import copy 
 
-class PieChart(Visualization):
-    def __init__(self, id= 3, name = 'Visualization #3', visual = None, data = None):
-        super().__init__(id, name, visual, data)
+class PieChart(BaseVisual):
+    def __init__(self):
+        visualType = Visual.PieChart
+        name = 'Visualization #3'
+        hasFiltering = True
+
+        super().__init__(visualType, name, hasFiltering)
         self.counties = []
         self.pollutant_data_original = {
             'categories': [],
@@ -14,7 +19,7 @@ class PieChart(Visualization):
         self.pollutant_data = {}  
 
     def set_pollutant_data(self):
-        for county in self.data:
+        for county in self.get_data():
             self.pollutant_data_original['categories'].append(county.County)
             self.pollutant_data_original['primary_pollutant'].append(county.GetPrimaryPollutant().name)
 
@@ -34,7 +39,7 @@ class PieChart(Visualization):
         counts, pollutants = self.get_list_of_counts()
         ax.pie(counts, labels = pollutants)
 
-        self.visual = figure 
+        self.set_visual(figure)
 
     def get_list_of_counts(self):
         counts = []
@@ -60,4 +65,4 @@ class PieChart(Visualization):
                 index = self.pollutant_data_original['categories'].index(county)
 
         for key in self.pollutant_data:
-            self.pollutant_data[key].insert(index, self.pollutant_data_original[key][index]) 
+            self.pollutant_data[key].insert(index, self.pollutant_data_original[key][index])

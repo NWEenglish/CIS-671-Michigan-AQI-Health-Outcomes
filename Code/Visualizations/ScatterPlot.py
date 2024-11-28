@@ -1,10 +1,15 @@
-from Visualizations.Visualization import Visualization
+from Enums.Visualization import Visual
+from Visualizations.BaseVisual import BaseVisual
 from matplotlib.figure import Figure
 import copy 
 
-class ScatterPlot(Visualization):
-    def __init__(self, id= 3, name = 'Visualization #6', visual = None, data = None):
-        super().__init__(id, name, visual, data) 
+class ScatterPlot(BaseVisual):
+    def __init__(self, visual, data):
+        visualType = Visual.ScatterPlot
+        name = 'Visualization #6'
+        hasFiltering = False
+
+        super().__init__(visualType, name, visual, data, hasFiltering) 
 
     def create_scatter_plot(self):
         pass

@@ -1,12 +1,17 @@
-from Visualizations.Visualization import Visualization
 from Enums.AqiStdMeasure import AqiStandard as aqi
+from Enums.Visualization import Visual
+from Visualizations.BaseVisual import BaseVisual
 from matplotlib.figure import Figure
 import numpy as np
-import copy 
+import copy
 
-class ColumnChart(Visualization):
-    def __init__(self, id= 2, name = 'Visualization #2', visual = None, data = None):
-        super().__init__(id, name, visual, data)
+class ColumnChart(BaseVisual):
+    def __init__(self):
+        visualType = Visual.ColumnChart
+        name = 'Visualization #2'
+        hasFiltering = True
+        
+        super().__init__(visualType, name, hasFiltering)
         self.counties = []  
         self.aqi_data_original = {
             'categories': [],
@@ -20,7 +25,7 @@ class ColumnChart(Visualization):
         self.aqi_data = {} 
 
     def set_aqi_data(self):
-        for county in self.data:    
+        for county in self.get_data():    
             self.aqi_data_original['categories'].append(county.County)
             self.aqi_data_original['good_days'].append(county.GetAqiDays(aqi.GoodDay).astype(float))
             self.aqi_data_original['moderate_days'].append(county.GetAqiDays(aqi.ModerateDay).astype(float)) 
@@ -75,7 +80,7 @@ class ColumnChart(Visualization):
 
         ax.legend(['Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy_Days', 'Very Unhealthy Days', 'Hazardous Days'], loc='upper left') 
 
-        self.visual = figure 
+        self.set_visual(figure)
 
     def remove_from_dict(self, county):
         if county in self.aqi_data['categories']:

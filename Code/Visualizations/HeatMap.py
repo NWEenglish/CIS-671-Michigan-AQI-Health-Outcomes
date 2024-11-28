@@ -1,10 +1,15 @@
-from Visualizations.Visualization import Visualization
+from Enums.Visualization import Visual
+from Visualizations.BaseVisual import BaseVisual
 from matplotlib.figure import Figure
 import copy 
 
-class HeatMap(Visualization):
-    def __init__(self, id= 5, name = 'Visualization #5', visual = None, data = None):
-        super().__init__(id, name, visual, data)  
+class HeatMap(BaseVisual):
+    def __init__(self):
+        visualType = Visual.HeatMap
+        name = 'Visualization #5'
+        hasFiltering = False
+    
+        super().__init__(visualType, name, hasFiltering)  
 
     def create_heat_map(self):
         pass 

@@ -1,11 +1,16 @@
-from Visualizations.Visualization import Visualization
+from Enums.Visualization import Visual
+from Visualizations.BaseVisual import BaseVisual
 from Modules.BubbleChart import BubbleChart as Bubble
-from matplotlib.figure import Figure 
-import copy 
+from matplotlib.figure import Figure
+import copy
 
-class BubbleChart(Visualization):
-    def __init__(self, id= 1, name = 'Visualization #1', visual = None, data = None):
-        super().__init__(id, name, visual, data) 
+class BubbleChart(BaseVisual):
+    def __init__(self):
+        visualType = Visual.BubbleChart
+        name = 'Visualization #1'
+        hasFiltering = True
+
+        super().__init__(visualType, name, hasFiltering) 
         self.counties = []
         self.pfas_data_original = {
             'categories': [],
@@ -27,7 +32,7 @@ class BubbleChart(Visualization):
         self.pfas_data = {} 
 
     def set_pfas_data(self):
-        for county in self.data:
+        for county in self.get_data():
             self.pfas_data_original['categories'].append(county.County)
             self.pfas_data_original['occurances'].append(county.Occurances)
 
@@ -54,7 +59,7 @@ class BubbleChart(Visualization):
         ax.autoscale_view()
         ax.set_title('PFAS Occurances Per County')
 
-        self.visual = figure 
+        self.set_visual(figure)
 
     def remove_from_dict(self, county):
         if county in self.pfas_data['categories']:

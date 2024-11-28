@@ -1,11 +1,16 @@
-from Visualizations.Visualization import Visualization
+from Enums.Visualization import Visual
+from Visualizations.BaseVisual import BaseVisual
 from matplotlib.figure import Figure
 import matplotlib.patches as mpatches
 import pandas as pd
 
-class ChoroplethMap(Visualization):
-    def __init__(self, id= 4, name = 'Visualization #4', visual = None, data = None):
-        super().__init__(id, name, visual, data)
+class ChoroplethMap(BaseVisual):
+    def __init__(self):
+        visualType = Visual.ChoroplethMap
+        name = 'Visualization #4'
+        hasFiltering = False
+
+        super().__init__(visualType, name, hasFiltering)
         self.healthpollutant_data = {
             'county': [],
             'health_outcome': [],
@@ -21,9 +26,10 @@ class ChoroplethMap(Visualization):
         return self.locations
 
     def set_geohealthpollutant_data(self):
-        geo = self.data[0]
-        health = self.data[1]
-        pollutants = self.data[2]
+        data = self.get_data()
+        geo = data[0]
+        health = data[1]
+        pollutants = data[2]
 
         for county in pollutants:
             self.healthpollutant_data['county'].append(county.County)
@@ -39,7 +45,7 @@ class ChoroplethMap(Visualization):
         color_map = {
             1: 'orange', 
             2: 'yellow', 
-            3:  'blue', 
+            3: 'blue', 
             4: 'red', 
             5: 'green'
         }
@@ -71,7 +77,15 @@ class ChoroplethMap(Visualization):
             if pd.notna(row['primary_pollutant']): 
                 center_marker = row['center_marker'] 
                 ax.plot(center_marker.x, center_marker.y, marker='o', color='black', markersize=5)
-                self.locations.append({'x': center_marker.x, 'y': center_marker.y, 'County': row['county'], 'Health Outcome': row['health_outcome'], 'Health Factors' : row['health_factors'], 'Quality Of Life' : row['quality_of_life'], 'Health Score' : row['health_score']})
+                self.locations.append({
+                    'x': center_marker.x,
+                    'y': center_marker.y,
+                    'County': row['county'],
+                    'Health Outcome': row['health_outcome'],
+                    'Health Factors': row['health_factors'],
+                    'Quality Of Life': row['quality_of_life'],
+                    'Health Score': row['health_score']
+                })
 
-        self.visual = figure  
+        self.set_visual(figure)
         
