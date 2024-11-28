@@ -8,8 +8,8 @@ class BubbleChart(Visualization):
         super().__init__(id, name, visual, data) 
         self.counties = []
         self.pfas_data_original = {
-            'categories' : [],
-            'occurances' : [],
+            'categories': [],
+            'occurances': [],
             'colors': ['#5A69AF', '#579E65', '#F9C784', '#FC944A', '#F24C00', 
                 '#00B825','#E3D55B', '#A03D6B', '#69A6A6', '#B29D56', '#A33F49', 
                 '#F59C42', '#D1D129', '#BC8A3C', '#C9D02D', '#3F8E91', '#FF7360',  

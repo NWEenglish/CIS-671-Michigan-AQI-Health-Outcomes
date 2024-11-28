@@ -7,12 +7,12 @@ class ChoroplethMap(Visualization):
     def __init__(self, id= 4, name = 'Visualization #4', visual = None, data = None):
         super().__init__(id, name, visual, data)
         self.healthpollutant_data = {
-            'county' : [],
-            'health_outcome' : [],
-            'health_factors' : [],
-            'quality_of_life' : [],
-            'health_score' : [],
-            'primary_pollutant' : [], 
+            'county': [],
+            'health_outcome': [],
+            'health_factors': [],
+            'quality_of_life': [],
+            'health_score': [],
+            'primary_pollutant': [], 
         } 
         self.geohealthpollutant_data = None 
         self.locations = []
@@ -36,7 +36,13 @@ class ChoroplethMap(Visualization):
                 self.healthpollutant_data['quality_of_life'].append(county.QualityOfLife)
                 self.healthpollutant_data['health_score'].append(county.HealthScore)
 
-        color_map = {1 : 'orange', 2 : 'yellow', 3 :  'blue', 4 : 'red', 5 : 'green'}
+        color_map = {
+            1: 'orange', 
+            2: 'yellow', 
+            3:  'blue', 
+            4: 'red', 
+            5: 'green'
+        }
         df = pd.DataFrame(self.healthpollutant_data)
         df['color'] = df['primary_pollutant'].map(color_map)
         

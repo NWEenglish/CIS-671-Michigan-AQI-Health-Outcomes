@@ -9,13 +9,13 @@ class ColumnChart(Visualization):
         super().__init__(id, name, visual, data)
         self.counties = []  
         self.aqi_data_original = {
-            'categories' : [],
-            'good_days' : [],
-            'moderate_days' : [],
-            'unhealthy_for_sensitive_groups_days' : [],
-            'unhealthy_days' : [],
-            'very_unhealthy_days' : [],
-            'hazardous_days' : []    
+            'categories': [],
+            'good_days': [],
+            'moderate_days': [],
+            'unhealthy_for_sensitive_groups_days': [],
+            'unhealthy_days': [],
+            'very_unhealthy_days': [],
+            'hazardous_days': []    
         } 
         self.aqi_data = {} 
 

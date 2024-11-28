@@ -6,4 +6,4 @@ class AqiStandard(Enum):
     UnhealthyForSensitiveGroupsDay = 3
     UnhealthyDay = 4
     VeryUnhealthyDay = 5
-    HazardousDays =6
+    HazardousDays = 6

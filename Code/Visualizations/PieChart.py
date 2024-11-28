@@ -8,8 +8,8 @@ class PieChart(Visualization):
         super().__init__(id, name, visual, data)
         self.counties = []
         self.pollutant_data_original = {
-            'categories' : [],
-            'primary_pollutant' : []
+            'categories': [],
+            'primary_pollutant': []
         }
         self.pollutant_data = {}  
 
