@@ -3,7 +3,7 @@ from Enums.AqiStdMeasure import AqiStandard as aqi
 from Models.CountyAqiDays import CountyAqiDays
 from View import View 
 from Model import Model 
-from tkinter import *  
+import tkinter as tk
 
 def main():
     print("Starting application.")
@@ -16,7 +16,7 @@ def main():
 
     #Tkinter documentation https://tkdocs.com/tutorial/index.html 
     print('Starting main frame')
-    root = Tk() 
+    root = tk.Tk() 
     root.title('Michigan Health')
     
     print('Creating model')

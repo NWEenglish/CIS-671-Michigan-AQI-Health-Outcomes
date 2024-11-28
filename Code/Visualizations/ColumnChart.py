@@ -90,4 +90,4 @@ class ColumnChart(Visualization):
                 index = self.aqi_data_original['categories'].index(county)
 
         for key in self.aqi_data:
-            self.aqi_data[key].insert(index, self.aqi_data_original[key][index])  
+            self.aqi_data[key].insert(index, self.aqi_data_original[key][index])

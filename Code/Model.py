@@ -74,7 +74,4 @@ class Model:
 
     def add_choropleth_map(self, geospatial, health_data, primary_pollutant):
         self.visualizations.get('choropleth_map').set_data([geospatial, health_data, primary_pollutant])
-        self.visualizations.get('choropleth_map').create_choropleth_map() 
-
-
-
+        self.visualizations.get('choropleth_map').create_choropleth_map()

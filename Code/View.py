@@ -1,10 +1,8 @@
-from tkinter import *
-from tkinter import ttk 
-from tkinter import font
-from tkinter import messagebox
+from tkinter import ttk, font, messagebox
 from functools import partial
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import math 
+import math
+import tkinter as tk
 
 class View:
     def __init__(self, display, model):
@@ -83,9 +81,9 @@ class View:
         checkbox_frame.grid(row=0, column=1, sticky='nsew')
 
         for county in visual.get_counties():
-            checkbox = IntVar(value=1)
+            checkbox = tk.IntVar(value=1)
             dict[county] = checkbox  
-            button = Checkbutton(checkbox_frame, text = county, 
+            button = tk.Checkbutton(checkbox_frame, text = county, 
                             variable = checkbox, 
                             onvalue = 1, 
                             offvalue = 0,
@@ -118,7 +116,3 @@ class View:
 
     def run_display(self):
         self.display.mainloop()
-
-    
-
-

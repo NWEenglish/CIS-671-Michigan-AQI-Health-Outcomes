@@ -1,7 +1,7 @@
 from Visualizations.Visualization import Visualization
 from matplotlib.figure import Figure
-import copy 
 from collections import Counter
+import copy 
 
 class PieChart(Visualization):
     def __init__(self, id= 3, name = 'Visualization #3', visual = None, data = None):

@@ -101,4 +101,3 @@ class DataProvider:
             print(f"Error occurred while getting health data. | Exception: {ex}")
         
         return geospatial_data
-

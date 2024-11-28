@@ -16,7 +16,3 @@ class Visualization:
 
     def get_visual(self):
         return self.visual 
-
-  
-
-    
