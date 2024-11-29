@@ -32,7 +32,7 @@ class ColumnChart(BaseVisual):
             self.aqi_data_original['unhealthy_for_sensitive_groups_days'].append(county.GetAqiDays(aqi.UnhealthyForSensitiveGroupsDay).astype(float)) 
             self.aqi_data_original['unhealthy_days'].append(county.GetAqiDays(aqi.UnhealthyDay).astype(float))
             self.aqi_data_original['very_unhealthy_days'].append(county.GetAqiDays(aqi.VeryUnhealthyDay).astype(float))
-            self.aqi_data_original['hazardous_days'].append(county.GetAqiDays(aqi.HazardousDays).astype(float))  
+            self.aqi_data_original['hazardous_days'].append(county.GetAqiDays(aqi.HazardousDays).astype(float))
 
         self.counties = self.aqi_data_original['categories']
         self.aqi_data = copy.deepcopy(self.aqi_data_original)
@@ -41,9 +41,9 @@ class ColumnChart(BaseVisual):
         return self.aqi_data
     
     def get_counties(self):
-        return self.counties 
+        return self.counties
 
-    def create_column_chart(self):
+    def create_chart(self):
         if self.aqi_data_original['categories'] == []:
             self.set_aqi_data()
         

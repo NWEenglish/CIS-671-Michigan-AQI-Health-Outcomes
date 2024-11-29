@@ -11,5 +11,5 @@ class HeatMap(BaseVisual):
     
         super().__init__(visualType, name, hasFiltering)  
 
-    def create_heat_map(self):
+    def create_chart(self):
         pass 

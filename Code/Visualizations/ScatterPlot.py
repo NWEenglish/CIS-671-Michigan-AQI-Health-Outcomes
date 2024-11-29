@@ -11,5 +11,5 @@ class ScatterPlot(BaseVisual):
 
         super().__init__(visualType, name, visual, data, hasFiltering) 
 
-    def create_scatter_plot(self):
+    def create_chart(self):
         pass

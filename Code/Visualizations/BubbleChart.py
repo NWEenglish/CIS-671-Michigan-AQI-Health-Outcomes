@@ -42,7 +42,7 @@ class BubbleChart(BaseVisual):
     def get_counties(self):
         return self.counties
 
-    def create_bubble_chart(self):
+    def create_chart(self):
         if self.pfas_data_original['categories'] == []:
             self.set_pfas_data()
 

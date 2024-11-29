@@ -29,7 +29,7 @@ class PieChart(BaseVisual):
     def get_counties(self):
         return self.counties
 
-    def create_pie_chart(self):
+    def create_chart(self):
         if self.pollutant_data_original['categories'] == []:
             self.set_pollutant_data()
 

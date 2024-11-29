@@ -29,3 +29,6 @@ class BaseVisual:
     
     def has_filtering(self) -> bool:
         return self._hasFiltering
+    
+    def create_chart(self) -> None:
+        raise NotImplementedError('This method must be implemented in child classes.')

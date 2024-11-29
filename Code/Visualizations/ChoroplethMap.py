@@ -56,7 +56,7 @@ class ChoroplethMap(BaseVisual):
         self.geohealthpollutant_data['center_marker'] = self.geohealthpollutant_data.geometry.centroid 
         self.geohealthpollutant_data['color'] = self.geohealthpollutant_data['color'].fillna('gray')
 
-    def create_choropleth_map(self):
+    def create_chart(self):
         if self.geohealthpollutant_data == None:
             self.set_geohealthpollutant_data()
 
