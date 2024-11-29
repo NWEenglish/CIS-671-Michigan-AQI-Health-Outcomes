@@ -7,7 +7,7 @@ from Visualizations.HeatMap import HeatMap
 from Visualizations.PieChart import PieChart
 from Visualizations.ScatterPlot import ScatterPlot
 
-class Model: 
+class Model:
     def __init__(self):
         self.visualizations = {
             Visual.BubbleChart: BubbleChart(),

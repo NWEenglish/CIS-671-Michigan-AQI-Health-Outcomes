@@ -57,30 +57,55 @@ class View:
             self.notebook.add(tab, text=visual.get_name())
 
             figure_frame = ttk.Frame(tab)
-            figure_frame.grid(row=0, column=0, sticky='nsew')
+            figure_frame.grid(row=0, column=0, sticky="nsew")
 
             canvas = FigureCanvasTkAgg(visual.get_visual(), master=figure_frame)
             canvas_widget = canvas.get_tk_widget()
             canvas_widget.grid(row=0, column=0, sticky="nsew")
-            if visual.get_id() == Visual.ChoroplethMap: 
+            if visual.get_id() == Visual.ChoroplethMap:
                 canvas.figure.canvas.mpl_connect('button_press_event', partial(self.on_click, vis=visual))
+                tab.grid_rowconfigure(0, weight=1)
+                tab.grid_columnconfigure(0, weight=1)
+                figure_frame.grid_rowconfigure(0, weight=1)
+                figure_frame.grid_columnconfigure(0, weight=1)
+            else:
+                tab.grid_rowconfigure(0, weight=1)
+                tab.grid_columnconfigure(0, weight=0)
+                tab.grid_columnconfigure(1, weight=1)
 
-            tab.grid_rowconfigure(0, weight=1)
-            tab.grid_columnconfigure(0, weight=1)
-            figure_frame.grid_rowconfigure(0, weight=1)
-            figure_frame.grid_columnconfigure(0, weight=1)
+                figure_frame.grid_rowconfigure(0, weight=1)
+                figure_frame.grid_columnconfigure(0, weight=1)
+
+                right_frame = ttk.Frame(tab)
+                right_frame.grid(row=0, column=1, sticky="ns")
+
+                checkbox_frame = self.add_scrollbar(right_frame)
 
             if visual.has_filtering():
                 filter = self.visualFilters.get(visual.get_id())
                 if not filter:
                     filter = {}
-                
-                self.add_checkboxes(visual, tab, filter, figure_frame)
-                
-    def add_checkboxes(self, visual, tab, filtering, figure_frame) -> None:
-        checkbox_frame = ttk.Frame(tab)
-        checkbox_frame.grid(row=0, column=1, sticky='nsew')
 
+                self.add_checkboxes(visual, checkbox_frame, filter, figure_frame)
+
+    #https://stackoverflow.com/questions/73095063/adding-a-scrollbar-to-a-canvas-with-figures-tkinter
+    def add_scrollbar(self, right_frame):
+        canvas = tk.Canvas(right_frame)
+        canvas.grid(row=0, column=0, sticky="nsew")
+        scrollbar = ttk.Scrollbar(right_frame, orient='vertical', command=canvas.yview)
+        scrollbar.grid(row=0, column=1, sticky="ns")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        checkbox_frame = ttk.Frame(canvas)
+        canvas.create_window((0, 0), window=checkbox_frame, anchor="nw")
+        checkbox_frame.bind('<Configure>', lambda e: canvas.config(scrollregion=canvas.bbox('all')))
+
+        right_frame.grid_rowconfigure(0, weight=1)
+        right_frame.grid_columnconfigure(0, weight=1)
+        right_frame.grid_columnconfigure(1, weight=0)
+
+        return checkbox_frame
+
+    def add_checkboxes(self, visual, checkbox_frame, filtering, figure_frame) -> None:
         for county in visual.get_counties():
             checkbox = tk.IntVar(value=1)
             filtering[county] = checkbox

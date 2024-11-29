@@ -18,6 +18,9 @@ def main():
     print('Starting main frame')
     root = tk.Tk() 
     root.title('Michigan Health')
+    root.state('zoomed')
+    root.geometry(f'{root.winfo_screenwidth()}x{root.winfo_screenheight()}')
+    root.maxsize(root.winfo_screenwidth(), root.winfo_screenheight())
     
     print('Creating model')
     model = Model()
