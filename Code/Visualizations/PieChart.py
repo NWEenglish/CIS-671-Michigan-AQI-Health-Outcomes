@@ -1,5 +1,7 @@
 from Enums.Visualization import Visual
+from Models.CountyAirPollutant import CountyAirPollutant
 from Visualizations.BaseVisual import BaseVisual
+from Visualizations.Helpers.AirPollutantHelper import AirPollutantHelper
 from Visualizations.Helpers.ColorHelper import ColorHelper
 from collections import Counter
 from matplotlib.figure import Figure
@@ -9,20 +11,36 @@ class PieChart(BaseVisual):
     def __init__(self):
         visualType = Visual.PieChart
         name = 'Visualization #3'
-        hasFiltering = True
+        hasFiltering = False
+        hasRadio = True
 
-        super().__init__(visualType, name, hasFiltering)
+        super().__init__(visualType, name, hasFiltering, hasRadio)
         self.counties = []
         self.pollutant_data_original = {
             'categories': [],
             'primary_pollutant': []
         }
-        self.pollutant_data = {}  
+        self.county_pollutant_data_original = {}
+        self.pollutant_data = {}
+        self._selectedCounty:CountyAirPollutant = None
 
     def set_pollutant_data(self):
+        self.pollutant_data_original['categories'] = []
+        self.pollutant_data_original['primary_pollutant'] = []
+        self.county_pollutant_data_original = {}
+
         for county in self.get_data():
             self.pollutant_data_original['categories'].append(county.County)
             self.pollutant_data_original['primary_pollutant'].append(county.GetPrimaryPollutant().name)
+
+            if self._selectedCounty == None: # Will default to the first county
+                self._selectedCounty = county.County
+
+            if self._selectedCounty != None and self._selectedCounty == county.County:
+                apHelper = AirPollutantHelper()
+
+                for pollutant in apHelper.GetPollutants():
+                    self.county_pollutant_data_original[pollutant.name] = county.GetPollutionCount(pollutant)
 
         self.counties = self.pollutant_data_original['categories']
         self.pollutant_data = copy.deepcopy(self.pollutant_data_original)
@@ -30,22 +48,41 @@ class PieChart(BaseVisual):
     def get_counties(self):
         return self.counties
 
-    def create_chart(self):
-        if self.pollutant_data_original['categories'] == []:
-            self.set_pollutant_data()
+    def create_chart(self) -> None:
+        self.set_pollutant_data()
 
         figure = Figure(figsize=(17, 12))
-        ax = figure.add_subplot(111)
-
+        
+        # State wide values
+        axState = figure.add_subplot(1, 2, 1)
         counts, pollutants = self.get_list_of_counts()
 
         cHelper = ColorHelper()
         pollutantColors = [cHelper.GetColor(p) for p in pollutants]
-        ax.pie(counts, labels=pollutants, colors=pollutantColors)
+        axState.pie(counts, labels=pollutants, colors=pollutantColors)
+
+        # County specific values
+        if self._selectedCounty != None:
+            axCounty = figure.add_subplot(1, 2, 2)
+
+            pollutants = []
+            counts = []
+
+            for pollutant in self.county_pollutant_data_original:
+                value = int(self.county_pollutant_data_original[pollutant])
+
+                # Only displaying pollutants that have at least 1 day
+                if value > 0:
+                    pollutants.append(pollutant)
+                    counts.append(value)
+
+            cHelper = ColorHelper()
+            pollutantColors = [cHelper.GetColor(p) for p in pollutants]
+            axCounty.pie(counts, labels=pollutants, colors=pollutantColors)
 
         self.set_visual(figure)
 
-    def get_list_of_counts(self):
+    def get_list_of_counts(self) -> None:
         counts = []
         pollutants = [] 
         counter = Counter(self.pollutant_data['primary_pollutant'])
@@ -55,18 +92,9 @@ class PieChart(BaseVisual):
             counts.append(item)
 
         return counts, pollutants
+    
+    def remove_from_dict(self, county) -> None:
+        print(f"This should not be hit. | County: {county}")
 
-    def remove_from_dict(self, county):
-        if county in self.pollutant_data['categories']:
-            index = self.pollutant_data['categories'].index(county)
-
-        for key in self.pollutant_data:
-            self.pollutant_data[key].pop(index)
-
-    def add_to_dict(self, county):
-        if county not in self.pollutant_data['categories']:
-            if county in self.pollutant_data_original['categories']:
-                index = self.pollutant_data_original['categories'].index(county)
-
-        for key in self.pollutant_data:
-            self.pollutant_data[key].insert(index, self.pollutant_data_original[key][index])
+    def add_to_dict(self, county) -> None:
+        self._selectedCounty = county

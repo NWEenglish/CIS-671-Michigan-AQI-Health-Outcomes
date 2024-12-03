@@ -88,6 +88,13 @@ class View:
 
                 self.add_checkboxes(visual, checkbox_frame, filter, figure_frame)
 
+            elif visual.has_radio():
+                filter = self.visualFilters.get(visual.get_id())
+                if not filter:
+                    filter = {}
+
+                self.add_radio(visual, checkbox_frame, filter, figure_frame)
+
     #https://stackoverflow.com/questions/73095063/adding-a-scrollbar-to-a-canvas-with-figures-tkinter
     def add_scrollbar(self, right_frame):
         canvas = tk.Canvas(right_frame)
@@ -116,9 +123,20 @@ class View:
                             command=lambda county=county: self.update_data(visual, filtering, county, figure_frame))
             button.grid(sticky="w") 
 
+    def add_radio(self, visual, radio_frame, filtering, figure_frame) -> None:
+        selected_county = tk.StringVar(value=visual.get_counties()[0])  # Default to first value
+
+        for county in visual.get_counties():
+            filtering[county] = selected_county
+            button = tk.Radiobutton(radio_frame, text=county,
+                                    variable=selected_county,
+                                    value=county,
+                                    command=lambda county=county: self.update_data(visual, filtering, county, figure_frame))
+            button.grid(sticky="w")
+
     def update_data(self, visual, filtering, county, figure_frame) -> None:
         self.model.update_visualization(visual, county, filtering[county].get())
-        self.update_display(visual, figure_frame) 
+        self.update_display(visual, figure_frame)
 
     def update_display(self, visual, figure_frame) -> None:
         for figure in figure_frame.winfo_children():

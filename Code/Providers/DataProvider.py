@@ -98,6 +98,6 @@ class DataProvider:
             geospatial_data = gpd.read_file(fileName)
         
         except Exception as ex:
-            print(f"Error occurred while getting health data. | Exception: {ex}")
+            print(f"Error occurred while getting geo spatial data. | Exception: {ex}")
         
         return geospatial_data
