@@ -1,5 +1,6 @@
 from Enums.Visualization import Visual
 from Visualizations.BaseVisual import BaseVisual
+from Visualizations.Helpers.ColorHelper import ColorHelper
 from collections import Counter
 from matplotlib.figure import Figure
 import copy 
@@ -37,7 +38,10 @@ class PieChart(BaseVisual):
         ax = figure.add_subplot(111)
 
         counts, pollutants = self.get_list_of_counts()
-        ax.pie(counts, labels = pollutants)
+
+        cHelper = ColorHelper()
+        pollutantColors = [cHelper.GetColor(p) for p in pollutants]
+        ax.pie(counts, labels=pollutants, colors=pollutantColors)
 
         self.set_visual(figure)
 

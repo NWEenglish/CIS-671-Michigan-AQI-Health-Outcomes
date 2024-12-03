@@ -1,5 +1,7 @@
 from Enums.Visualization import Visual
 from Visualizations.BaseVisual import BaseVisual
+from Visualizations.Helpers.AirPollutantHelper import AirPollutantHelper
+from Visualizations.Helpers.ColorHelper import ColorHelper
 from matplotlib.figure import Figure
 import matplotlib.patches as mpatches
 import pandas as pd
@@ -42,13 +44,9 @@ class ChoroplethMap(BaseVisual):
                 self.healthpollutant_data['quality_of_life'].append(county.QualityOfLife)
                 self.healthpollutant_data['health_score'].append(county.HealthScore)
 
-        color_map = {
-            1: 'orange', 
-            2: 'yellow', 
-            3: 'blue', 
-            4: 'red', 
-            5: 'green'
-        }
+        cHelper = ColorHelper()
+        color_map = cHelper.GetColorMap()
+
         df = pd.DataFrame(self.healthpollutant_data)
         df['color'] = df['primary_pollutant'].map(color_map)
         
@@ -65,10 +63,13 @@ class ChoroplethMap(BaseVisual):
         ax.set_title('Michigan Counties', fontsize=16)
         
         handles = []
-        colors = ['orange', 'yellow', 'blue', 'red', 'green']
-        pollutants = ['CO', 'NO2', 'Ozone', 'PM25', 'PM10']
-        for i in range(len(colors)):
-            handles.append(mpatches.Patch(color=colors[i], label=pollutants[i]))
+
+        apHelper = AirPollutantHelper()
+        pollutants = apHelper.GetPollutants()
+
+        colorHelper = ColorHelper()
+        for pollutant in pollutants:
+            handles.append(mpatches.Patch(color=colorHelper.GetColor(pollutant), label=pollutant.name))
 
         ax.legend(handles=handles, loc='upper right')
         self.geohealthpollutant_data.plot(ax = ax, color = self.geohealthpollutant_data['color'], edgecolor='black')
