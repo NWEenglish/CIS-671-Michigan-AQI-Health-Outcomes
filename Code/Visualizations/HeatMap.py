@@ -2,7 +2,6 @@ from Enums.Visualization import Visual
 from Visualizations.BaseVisual import BaseVisual
 from matplotlib.figure import Figure
 from typing import List
-import matplotlib.pyplot as plt
 
 class HeatMap(BaseVisual):
     def __init__(self):
@@ -27,7 +26,7 @@ class HeatMap(BaseVisual):
             data.append([county, countyValues.MedianAqi, countyValues.HealthScore])
 
         figure = Figure(figsize=(17, 12))
-        ax = figure.add_subplot(1, 2, 1)
+        ax = figure.add_subplot(1, 1, 1)
         ax.set_title(f"Michigan Counties\nMedium AQI vs Health Score Heat Map")
         ax.axis('off')
 

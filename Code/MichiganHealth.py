@@ -1,6 +1,4 @@
 from Providers.DataProvider import DataProvider as dp
-from Enums.AqiStdMeasure import AqiStandard as aqi
-from Models.CountyAqiDays import CountyAqiDays
 from View import View 
 from Model import Model 
 import tkinter as tk

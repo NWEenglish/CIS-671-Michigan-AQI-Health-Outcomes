@@ -23,32 +23,27 @@ class View:
 
     def create_homepage(self) -> None:
         tab = ttk.Frame(self.notebook)
-
         self.notebook.add(tab, text='Home')
 
         label = ttk.Label(tab, text="Welcome", font=font.Font(size=30))
         label.grid(row=0, column=0, sticky='nsew')
         label.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=100, anchor='center')
 
-        label1 = ttk.Label(tab, text="Visual #1: PFAS Occurances Per County", font=font.Font(size=20))
-        label1.grid(row=0, column=0, sticky='nsew')
-        label1.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=200, anchor='center')
+        yValue = 100
+        textLabels = [
+            "Visual #1: PFAS Occurances Per County",
+            "Visual #2: Percent AQI Days Per County",
+            "Visual #3: Pie Chart",
+            "Visual #4: Choropleth Map",
+            "Visual #5: Heat Map",
+            "Visual #6: Scatter Plot"
+        ]
 
-        label2 = ttk.Label(tab, text="Visual #2: Percent AQI Days Per County", font=font.Font(size=20))
-        label2.grid(row=0, column=0, sticky='nsew')
-        label2.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=300, anchor='center')
-
-        label3 = ttk.Label(tab, text="Visual #3: Pie Chart", font=font.Font(size=20))
-        label3.grid(row=0, column=0, sticky='nsew')
-        label3.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=400, anchor='center')
-
-        label4 = ttk.Label(tab, text="Visual #4: Choropleth Map", font=font.Font(size=20))
-        label4.grid(row=0, column=0, sticky='nsew')
-        label4.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=500, anchor='center')
-
-        label5 = ttk.Label(tab, text="Visual #5: Heat Map", font=font.Font(size=20))
-        label5.grid(row=0, column=0, sticky='nsew')
-        label5.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=600, anchor='center')
+        for textLabel in textLabels:
+            yValue += 100
+            label = ttk.Label(tab, text=textLabel, font=font.Font(size=20))
+            label.grid(row=0, column=0, sticky='nsew')
+            label.place(x=((self.notebook.winfo_screenwidth() / 2))-25, y=yValue, anchor='center')
 
     def add_visualizations(self) -> None:
         visual: BaseVisual
