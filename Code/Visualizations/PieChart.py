@@ -59,6 +59,7 @@ class PieChart(BaseVisual):
 
         cHelper = ColorHelper()
         pollutantColors = [cHelper.GetColor(p) for p in pollutants]
+        axState.set_title(f"Michigan's Statewide Primary Pollutants\n(% of Counties Pollutant was Primary)")
         axState.pie(counts, labels=pollutants, colors=pollutantColors)
 
         # County specific values
@@ -78,6 +79,7 @@ class PieChart(BaseVisual):
 
             cHelper = ColorHelper()
             pollutantColors = [cHelper.GetColor(p) for p in pollutants]
+            axCounty.set_title(f"{self._selectedCounty} County's Primary Air Pollutants\n(% of Days Pollutant was Primary)")
             axCounty.pie(counts, labels=pollutants, colors=pollutantColors)
 
         self.set_visual(figure)

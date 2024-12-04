@@ -85,7 +85,7 @@ class View:
                 filter = self.visualFilters.get(visual.get_id())
                 if not filter:
                     filter = {}
-
+                
                 self.add_checkboxes(visual, checkbox_frame, filter, figure_frame)
 
             elif visual.has_radio():
@@ -119,34 +119,41 @@ class View:
 
         return checkbox_frame
 
-    def add_checkboxes(self, visual, checkbox_frame, filtering, figure_frame) -> None:
+    def add_checkboxes(self, visual, frame, filtering, figure_frame) -> None:
+        label = tk.Label(frame, text="Display Selected")
+        label.grid(sticky="w") 
+
         for county in visual.get_counties():
             checkbox = tk.IntVar(value=1)
             filtering[county] = checkbox
-            button = tk.Checkbutton(checkbox_frame, text = county,
+            button = tk.Checkbutton(frame, text = county,
                             variable = checkbox,
                             onvalue = 1,
                             offvalue = 0,
                             command=lambda county=county: self.update_data(visual, filtering, county, figure_frame))
             button.grid(sticky="w") 
 
-    def add_radio(self, visual, radio_frame, filtering, figure_frame) -> None:
+    def add_radio(self, visual, frame, filtering, figure_frame) -> None:
         selected_county = tk.StringVar(value=visual.get_counties()[0])  # Default to first value
+        label = tk.Label(frame, text="Display Selected")
+        label.grid(sticky="w")
 
         for county in visual.get_counties():
             filtering[county] = selected_county
-            button = tk.Radiobutton(radio_frame, text=county,
+            button = tk.Radiobutton(frame, text=county,
                                     variable=selected_county,
                                     value=county,
                                     command=lambda county=county: self.update_data(visual, filtering, county, figure_frame))
             button.grid(sticky="w")
 
-    def add_sort(self, visual, radio_frame, filtering, figure_frame) -> None:
+    def add_sort(self, visual, frame, filtering, figure_frame) -> None:
         selected_option = tk.StringVar(value=visual.get_sort_options()[0])  # Default to first value
+        label = tk.Label(frame, text="Sort By")
+        label.grid(sticky="w")
 
         for option in visual.get_sort_options():
             filtering[option] = selected_option
-            button = tk.Radiobutton(radio_frame, text=option,
+            button = tk.Radiobutton(frame, text=option,
                                     variable=selected_option,
                                     value=option,
                                     command=lambda county=option: self.update_data(visual, filtering, county, figure_frame))
