@@ -22,6 +22,7 @@ class Model:
         self.add_visual(Visual.ColumnChart, aqi_days)
         self.add_visual(Visual.PieChart, primary_pollutants)
         self.add_visual(Visual.ChoroplethMap, [geo_data, health_data, primary_pollutants])
+        self.add_visual(Visual.HeatMap, [aqi_days, health_data])
 
     def get_visualizations(self) -> BaseVisual:
         return self.visualizations

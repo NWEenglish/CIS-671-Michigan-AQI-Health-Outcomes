@@ -95,6 +95,13 @@ class View:
 
                 self.add_radio(visual, checkbox_frame, filter, figure_frame)
 
+            elif visual.has_sorting():
+                filter = self.visualFilters.get(visual.get_id())
+                if not filter:
+                    filter = {}
+
+                self.add_sort(visual, checkbox_frame, filter, figure_frame)
+
     #https://stackoverflow.com/questions/73095063/adding-a-scrollbar-to-a-canvas-with-figures-tkinter
     def add_scrollbar(self, right_frame):
         canvas = tk.Canvas(right_frame)
@@ -134,8 +141,19 @@ class View:
                                     command=lambda county=county: self.update_data(visual, filtering, county, figure_frame))
             button.grid(sticky="w")
 
-    def update_data(self, visual, filtering, county, figure_frame) -> None:
-        self.model.update_visualization(visual, county, filtering[county].get())
+    def add_sort(self, visual, radio_frame, filtering, figure_frame) -> None:
+        selected_option = tk.StringVar(value=visual.get_sort_options()[0])  # Default to first value
+
+        for option in visual.get_sort_options():
+            filtering[option] = selected_option
+            button = tk.Radiobutton(radio_frame, text=option,
+                                    variable=selected_option,
+                                    value=option,
+                                    command=lambda county=option: self.update_data(visual, filtering, county, figure_frame))
+            button.grid(sticky="w")
+
+    def update_data(self, visual, filtering, value, figure_frame) -> None:
+        self.model.update_visualization(visual, value, filtering[value].get())
         self.update_display(visual, figure_frame)
 
     def update_display(self, visual, figure_frame) -> None:
