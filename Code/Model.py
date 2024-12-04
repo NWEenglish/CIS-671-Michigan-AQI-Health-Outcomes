@@ -14,7 +14,8 @@ class Model:
             Visual.ColumnChart: ColumnChart(),
             Visual.PieChart: PieChart(),
             Visual.ChoroplethMap: ChoroplethMap(),
-            Visual.HeatMap: HeatMap()
+            Visual.HeatMap: HeatMap(),
+            Visual.ScatterPlot: ScatterPlot()
         }
 
     def set_visualizations(self, aqi_days, pfas_occurances, primary_pollutants, geo_data, health_data) -> None:
@@ -23,6 +24,7 @@ class Model:
         self.add_visual(Visual.PieChart, primary_pollutants)
         self.add_visual(Visual.ChoroplethMap, [geo_data, health_data, primary_pollutants])
         self.add_visual(Visual.HeatMap, [aqi_days, health_data])
+        self.add_visual(Visual.ScatterPlot, [aqi_days, health_data])
 
     def get_visualizations(self) -> BaseVisual:
         return self.visualizations
