@@ -119,7 +119,7 @@ class View:
         label.grid(sticky="w") 
 
         for county in visual.get_counties():
-            checkbox = tk.IntVar(value=1)
+            checkbox = tk.IntVar(value=visual.has_default_filtering_all())
             filtering[county] = checkbox
             button = tk.Checkbutton(frame, text = county,
                             variable = checkbox,
