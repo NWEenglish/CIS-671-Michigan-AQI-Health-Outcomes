@@ -213,6 +213,7 @@ Muskegon,Whitehall,Wastewater
 Muskegon ,Whitehall,Landfill
 Muskegon ,Whitehall,Landfill
 Newaygo,Fremont,Landfill
+Newaygo,Walkerville,Tannery
 Newaygo,Grant,Wastewater
 Oakland, Pontiac               ,Industrial
 Oakland,Auburn Hills,Landfill
@@ -237,7 +238,7 @@ Oakland ,Waterford,Fire Related
 Oakland ,Clarkston,Landfill
 Oakland ,Northville,Landfill
 Oakland ,Rochester Hills,Landfill
-Oceana & Newaygo          ,Walkerville,Tannery
+Oceana,Walkerville,Tannery
 Otsego ,Gaylord,Industrial
 Ottawa,Grand Haven,Fire Related
 Ottawa,Grand Haven,Industrial
@@ -277,6 +278,7 @@ Washtenaw,Saline,Industrial
 Washtenaw,Saline,Plating
 Washtenaw,Ypsilanti,Industrial
 Washtenaw ,Chelsea,Industrial
+Washtenaw,Ypsilanti,Airport
 Washtenaw ,Ypsilanti,Laundromat/Dry Cleaner
 Wayne,Belleville,Landfill
 Wayne,Belleville,Landfill
@@ -291,7 +293,7 @@ Wayne,Livonia,Industrial
 Wayne,Romulus,Airport
 Wayne,Romulus,Landfill
 Wayne,Wyandotte,Industrial
-Wayne and Washtenaw,Ypsilanti,Airport
+Wayne,Ypsilanti,Airport
 Wayne ,Canton,Landfill
 Wayne ,Trenton,Industrial
 Wayne ,Wayne,Industrial
