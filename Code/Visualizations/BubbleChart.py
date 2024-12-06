@@ -57,7 +57,7 @@ class BubbleChart(BaseVisual):
         
         ax.axis("off")
         ax.autoscale_view()
-        ax.set_title('Packed Bubble Chart: \nPFAS Occurrences Per Michigan County')
+        ax.set_title('Packed Bubble Chart: \nPFAS Occurrences per Michigan County')
 
         self.set_visual(figure)
 

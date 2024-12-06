@@ -27,7 +27,7 @@ class HeatMap(BaseVisual):
 
         figure = Figure(figsize=(17, 12))
         ax = figure.add_subplot(1, 1, 1)
-        ax.set_title(f"Heat Map: \nAQI and Health Score Per Michigan County")
+        ax.set_title(f"Heat Map: \nAQI and Health Score per Michigan County")
         ax.axis('off')
 
         table = ax.table(

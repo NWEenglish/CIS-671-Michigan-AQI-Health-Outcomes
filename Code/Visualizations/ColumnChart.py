@@ -68,7 +68,7 @@ class ColumnChart(BaseVisual):
         ax.bar(pos + (bar_width*4), very_unhealthy_days_percent, bar_width, color='red')
         ax.bar(pos + (bar_width*5), hazardous_days_percent, bar_width, color='black')
 
-        ax.set_title('Column Chart: \nPercent AQI Days Per Michigan County')
+        ax.set_title('Column Chart: \nPercent AQI Days per Michigan County')
         ax.set_xlabel('Michigan Counties')
         ax.set_ylabel('Percent AQI Number of Days')
 
