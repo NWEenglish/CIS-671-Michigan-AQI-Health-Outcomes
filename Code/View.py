@@ -31,12 +31,12 @@ class View:
 
         yValue = 100
         textLabels = [
-            "Visual #1: PFAS Occurances Per County",
-            "Visual #2: Percent AQI Days Per County",
-            "Visual #3: Pie Chart",
-            "Visual #4: Choropleth Map",
-            "Visual #5: Heat Map",
-            "Visual #6: Scatter Plot"
+            "Visual #1: Packed Bubble Chart - PFAS Occurrences per Michigan County",
+            "Visual #2: Column Chart - Percent AQI Days per Michigan County",
+            "Visual #3: Pie Chart - Primary Pollutants in State of Michigan and per County",
+            "Visual #4: Choropleth Map - Primary Pollutant and Health Metrics per Michigan County",
+            "Visual #5: Heat Map - AQI and Health Score per Michigan County",
+            "Visual #6: Scatter Plot - Relating Michigan Counties by AQI and Health Score"
         ]
 
         for textLabel in textLabels:

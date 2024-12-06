@@ -52,6 +52,7 @@ class PieChart(BaseVisual):
         self.set_pollutant_data()
 
         figure = Figure(figsize=(17, 12))
+        figure.suptitle('Pie Chart: \nPrimary Pollutants in State of Michigan and Per County')
         
         # State wide values
         axState = figure.add_subplot(1, 2, 1)

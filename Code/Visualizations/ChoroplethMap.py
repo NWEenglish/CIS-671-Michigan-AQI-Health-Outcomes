@@ -60,7 +60,7 @@ class ChoroplethMap(BaseVisual):
 
         figure = Figure(figsize=(17, 12))
         ax = figure.add_subplot(111)
-        ax.set_title('Michigan Counties', fontsize=16)
+        ax.set_title('Choropleth Map: \nPrimary Pollutant and Health Metrics Per Michigan County')
         
         handles = []
 

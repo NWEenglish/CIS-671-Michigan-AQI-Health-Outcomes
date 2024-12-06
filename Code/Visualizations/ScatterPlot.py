@@ -44,7 +44,7 @@ class ScatterPlot(BaseVisual):
         figure = Figure(figsize=(17, 12))
         ax = figure.add_subplot(1, 1, 1)
         
-        ax.set_title(f"Michigan Counties Medium AQI vs Health Score")
+        ax.set_title(f"Scatter Plot: \nRelating Michigan Counties by AQI and Health Score")
         ax.set_xlabel('Health Score')
         ax.set_ylabel('Median AQI')
 
